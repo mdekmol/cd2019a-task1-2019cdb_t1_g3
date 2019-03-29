@@ -1,251 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+Title: Python Getting Started
+Date: 2018-09-11 11:00
+Category: Python
+Tags: 2018FallCP
+Slug: cd2019b-task1-2019cdb-t1-g3-1/PythonGettingStarted
+Author: yen
+---
 
-<head>
-      <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+以下程式架構取自 <http://lab.kmol.info/blog/brython-programming-environment.html>, 使用 static/py/ 目錄中的 ace.py 程式定義.
 
-
-  <title>Python Getting Started</title>
-
-
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="referrer" content="origin" />
-  <meta name="generator" content="Pelican" />
-  <link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/" rel="canonical" />
-
-  <!-- Feed -->
-        <link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="CMSimfly 網際內容管理 Full Atom Feed" />
-          <link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="CMSimfly 網際內容管理 Categories Atom Feed" />
-
-  <link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/theme/css/style.css" type="text/css" rel="stylesheet" />
-
-  <!-- Code highlight color scheme -->
-      <link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/theme/css/code_blocks/tomorrow_night.css" rel="stylesheet">
-
-  
-    <link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
-
-  <!-- Custom fonts -->
-  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-
-    <link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/2018-Fall-Python-Getting-Started.html" rel="canonical" />
-
-        <meta name="description" content="以下程式架構取自 http://lab.kmol.info/blog/brython-programming-environment.html, 使用 static/py/ 目錄中的 ace.py 程式定義. canvas { border: 1px solid...">
-
-        <meta name="author" content="yen">
-
-        <meta name="tags" content="2018FallCP">
-
-
-
-
-<!-- Open Graph -->
-<meta property="og:site_name" content="CMSimfly 網際內容管理"/>
-<meta property="og:title" content="Python Getting Started"/>
-<meta property="og:description" content="以下程式架構取自 http://lab.kmol.info/blog/brython-programming-environment.html, 使用 static/py/ 目錄中的 ace.py 程式定義. canvas { border: 1px solid..."/>
-<meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/2018-Fall-Python-Getting-Started.html"/>
-<meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2018-09-11 11:00:00+08:00"/>
-<meta property="article:modified_time" content=""/>
-<meta property="article:author" content="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/author/yen.html">
-<meta property="article:section" content="Python"/>
-<meta property="article:tag" content="2018FallCP"/>
-<meta property="og:image" content="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/theme/images/post-bg.jpg">
-
-<!-- Twitter Card -->
-
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Article",
-  "name": "Python Getting Started",
-  "headline": "Python Getting Started",
-  "datePublished": "2018-09-11 11:00:00+08:00",
-  "dateModified": "",
-  "author": {
-    "@type": "Person",
-    "name": "yen",
-    "url": "https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/author/yen.html"
-  },
-  "image": "https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/theme/images/post-bg.jpg",
-  "url": "https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/2018-Fall-Python-Getting-Started.html",
-  "description": "以下程式架構取自 http://lab.kmol.info/blog/brython-programming-environment.html, 使用 static/py/ 目錄中的 ace.py 程式定義. canvas { border: 1px solid..."
-}
-</script>
-<script type="text/javascript" src="./../data/syntaxhighlighter/shCore.js"></script>
-<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushJScript.js"></script>
-<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushJava.js"></script>
-<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushPython.js"></script>
-<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushSql.js"></script>
-<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushXml.js"></script>
-<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushPhp.js"></script>
-<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushCpp.js"></script>
-<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushCss.js"></script>
-<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushCSharp.js"></script>
-<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushBash.js"></script>
-<script type="text/javascript" src="./../data/syntaxhighlighter/shBrushLua.js"></script>
-<script type='text/javascript'>
-	(function(){
-		var corecss = document.createElement('link');
-		var themecss = document.createElement('link');
-		var corecssurl = "./../data/syntaxhighlighter/shCore.css";
-		if ( corecss.setAttribute ) {
-				corecss.setAttribute( "rel", "stylesheet" );
-				corecss.setAttribute( "type", "text/css" );
-				corecss.setAttribute( "href", corecssurl );
-		} else {
-				corecss.rel = "stylesheet";
-				corecss.href = corecssurl;
-		}
-		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
-		var themecssurl = "./../data/syntaxhighlighter/shThemeDefault.css?ver=3.0.9b";
-		if ( themecss.setAttribute ) {
-				themecss.setAttribute( "rel", "stylesheet" );
-				themecss.setAttribute( "type", "text/css" );
-				themecss.setAttribute( "href", themecssurl );
-		} else {
-				themecss.rel = "stylesheet";
-				themecss.href = themecssurl;
-		}
-		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
-		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
-	})();
-	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
-	SyntaxHighlighter.config.strings.help = '?';
-	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
-	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
-	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
-	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
-	SyntaxHighlighter.defaults['toolbar'] = false;
-	SyntaxHighlighter.all();
-</script>
-
-<!-- for LaTeX equations -->
-<script src="./../data/math/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
-<script type="text/javascript">
-init_mathjax = function() {
-    if (window.MathJax) {
-        // MathJax loaded
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
-            },
-            displayAlign: 'left', // Change this to 'center' to center equations.
-            "HTML-CSS": {
-                styles: {'.MathJax_Display': {"margin": 0}}
-            }
-        });
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-    }
-}
-init_mathjax();
-</script>
-
-</head>
-<!-- TODO : Body class -->
-<body class="home-template">
-
-<nav id="menu">
-  <a class="close-button">Close</a>
-  <div class="nav-wrapper">
-    <p class="nav-label">Menu</p>
-    <ul>
-    <!--
-
-              <li role="presentation"><a href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/pages/about/">About</a></li>
-      -->
-
-            <li><a href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/pages/about/index.html">About</span></a></li>
-            
-            <li><a href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/archives.html">Archives</span></a></li>
-            
-            <li><a href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/categories.html">Categories</span></a></li>
-            
-            <li><a href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/tags.html">Tags</span></a></li>
-
-    </ul>
-  </div>
-</nav>
-    <!-- Progressbar -->
-    <div class="progress-container">
-        <span class="progress-bar"></span>
-    </div>
-
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header id="post-header" class="has-cover">
-      <div class="inner">
-        <nav id="navigation">
-            <span id="home-button" class="nav-button">
-                <a class="home-button" href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/index.html" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
-            </span>
-          <span id="menu-button" class="nav-button">
-            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
-          </span>
-        </nav>
-        <h1 class="post-title">Python Getting Started</h1>
-        <!-- TODO : Proper class for headline -->
-        <span class="post-meta">
-                <a href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/author/yen.html">Yen</a>
-            | <time datetime="週二 11 九月 2018">週二 11 九月 2018</time>
-        </span>
-        <!-- TODO : Modified check -->
-            <div class="post-cover cover" style="background-image: url('https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/theme/images/post-bg.jpg')">
-      </div>
-    </header>
-
-  <section id="wrapper">
-    <a class="hidden-close"></a>
-
-<section class="search">
-      <form class="navbar-search" action="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/search.html">
-      <input type="text"  placeholder="Search" name="q" id="tipue_search_input" required>
-    </form>
-</section>
-
-
-    <!-- Post content -->
-    <main class="content" role="main">
-        <article class="post">
-        <div class="inner">
-            <section class="post-content">
-                <p>以下程式架構取自 <a href="http://lab.kmol.info/blog/brython-programming-environment.html">http://lab.kmol.info/blog/brython-programming-environment.html</a>, 使用 static/py/ 目錄中的 ace.py 程式定義.</p>
-
+<!-- PELICAN_END_SUMMARY -->
 
 <!-- 導入 FileSaver 與 filereader -->
-
 <script type="text/javascript" src="./../static/ace/FileSaver.min.js"></script>
-
 <script type="text/javascript" src="./../static/ace/filereader.js"></script>
 
 <script type="text/javascript" src="./../static/brython.js"></script>
-
 <script type="text/javascript" src="./../static/brython_stdlib.js"></script>
 
 <!-- 導入平面機構模擬所需程式庫 -->
 
 <!-- sylvester.js 為向量、矩陣與幾何程式庫 http://sylvester.jcoglan.com/ -->
-
 <script src="./../static/sylvester/sylvester.js"></script>
-
 <!-- PrairieDraw.js 為延伸 sylvester.js 的 html5 canvas 繪圖應用程式庫 https://github.com/martin70/PrairieDraw.js -->
-
 <script src="./../static/sylvester/PrairieDraw.js"></script>
-
 <style>
 canvas {
     border: 1px solid black;
@@ -261,11 +39,8 @@ brython({debug:1, pythonpath:['./../static']});
 <!-- 以下執行 Brython 程式 -->
 
 <script src="./../static/ace/ace.js" type="text/javascript" charset="utf-8"></script>
-
 <script src="./../static/ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
-
 <script src="./../static/ace/mode-python3.js" type="text/javascript" charset="utf-8"></script>
-
 <script src="./../static/ace/snippets/python.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱-->
@@ -278,18 +53,21 @@ function doSave(storage_id, filename){
 }
 </script>
 
-<p>編寫 Python3 程式邏輯之前必須先了解基本的程式語法, 其中包括:</p>
-<h2>Python3 變數命名規則與關鍵字</h2>
-<p>Python 英文變數命名規格</p>
-<div class="highlight"><pre><span></span>變數必須以英文字母大寫或小寫或底線開頭
-變數其餘字元可以是英文大小寫字母, 數字或底線
-變數區分英文大小寫
-變數不限字元長度
-不可使用關鍵字當作變數名稱
-</pre></div>
+編寫 Python3 程式邏輯之前必須先了解基本的程式語法, 其中包括:
 
+Python3 變數命名規則與關鍵字
+---
 
-<p>使用者可以利用以下程式列出所使用 Python 的版次與關鍵字:</p>
+Python 英文變數命名規格
+
+    變數必須以英文字母大寫或小寫或底線開頭
+    變數其餘字元可以是英文大小寫字母, 數字或底線
+    變數區分英文大小寫
+    變數不限字元長度
+    不可使用關鍵字當作變數名稱
+
+使用者可以利用以下程式列出所使用 Python 的版次與關鍵字:
+
 <!-- 印出版次與關鍵字程式 -->
 
 <script type="text/python3">
@@ -328,26 +106,33 @@ doc['kw_clear_console'].bind('click', Ace.clear_console)
     <label>Filename: <input type="text" id="kw_filename" placeholder="input file name"/>.py</label>
     <input type="submit" value="Save" onclick="doSave('kw_py_src', 'kw_filename');"/>
 </form>
-
-<p><button id="kw_run">Run</button>
+<button id="kw_run">Run</button>
 <button id="kw_show_console">Output</button>
 <button id="kw_clear_console">清除</button>
 <div style="width:100%;height:100%;">
 <textarea id="kw_console" autocomplete="off"></textarea>
-</div></p>
-<p>Python3 的程式關鍵字, 使用者命名變數時, 必須避開下列保留字.</p>
-<p>Python keywords:  ['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']</p>
-<p>選擇好的變數名稱:</p>
-<div class="highlight"><pre><span></span>使用有意義且適當長度的變數名稱， 例如: 使用 length 代表長度, 不要單獨使用 l 或 L, 也不要使用 this_is_the_length
-程式前後變數命名方式盡量一致, 例如: 使用 rect_length 或 RectLength
-用底線開頭的變數通常具有特殊意義
-</pre></div>
+</div>
 
+Python3 的程式關鍵字, 使用者命名變數時, 必須避開下列保留字.
 
-<h2>print() 函式用法</h2>
-<p>print() 為 Python 程式語言中用來列印數值或字串的函式, 其中有 sep 變數定義分隔符號, sep 內定為 ",", end 變數則用來定義列印結尾的符號, end 內定為跳行符號.</p>
-<h2>for 迴圈用法與 Python 的縮排規定</h2>
-<p>重複迴圈用法, 使用者可以透過下列程式編輯區練習 for 迴圈與 print() 函式的用法.</p>
+Python keywords:  ['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+
+選擇好的變數名稱:
+
+    使用有意義且適當長度的變數名稱， 例如: 使用 length 代表長度, 不要單獨使用 l 或 L, 也不要使用 this_is_the_length
+    程式前後變數命名方式盡量一致, 例如: 使用 rect_length 或 RectLength
+    用底線開頭的變數通常具有特殊意義
+
+print() 函式用法
+---
+
+print() 為 Python 程式語言中用來列印數值或字串的函式, 其中有 sep 變數定義分隔符號, sep 內定為 ",", end 變數則用來定義列印結尾的符號, end 內定為跳行符號.
+
+for 迴圈用法與 Python 的縮排規定
+---
+
+重複迴圈用法, 使用者可以透過下列程式編輯區練習 for 迴圈與 print() 函式的用法.
+
 <script type="text/python3">
 from browser import document as doc
 import ace
@@ -377,15 +162,19 @@ doc['clear_console'].bind('click', Ace.clear_console)
     <label>Filename: <input type="text" id="filename" placeholder="input file name"/>.py</label>
     <input type="submit" value="Save" onclick="doSave('py_src', 'filename');"/>
 </form>
-
-<p><button id="run">Run</button>
+<button id="run">Run</button>
 <button id="show_console">Output</button>
 <button id="clear_console">清除</button>
 <div style="width:100%;height:100%;">
 <textarea id="console" autocomplete="off"></textarea>
-</div></p>
-<h2>函式用法與呼叫</h2>
-<p>使用者可以利用下列程式, 練習 def 函式定義與呼叫的用法.</p>
+</div>
+
+
+函式用法與呼叫
+---
+
+使用者可以利用下列程式, 練習 def 函式定義與呼叫的用法.
+
 <script type="text/python3">
 from browser import document as doc
 import ace
@@ -420,16 +209,17 @@ doc['fun_clear_console'].bind('click', Ace.clear_console)
     <label>Filename: <input type="text" id="fun_filename" placeholder="input file name"/>.py</label>
     <input type="submit" value="Save" onclick="doSave('fun_py_src', 'fun_filename');"/>
 </form>
-
-<p><button id="fun_run">Run</button>
+<button id="fun_run">Run</button>
 <button id="fun_show_console">Output</button>
 <button id="fun_clear_console">清除</button>
 <div style="width:100%;height:100%;">
 <textarea id="fun_console" autocomplete="off"></textarea>
-</div></p>
+</div>
+
 <!-- Brython 的網際繪圖 -->
 
-<p>以下網際繪圖程式, 僅提供參考.</p>
+以下網際繪圖程式, 僅提供參考.
+
 <script type="text/python3">
 from browser import document as doc
 import ace
@@ -510,18 +300,19 @@ doc['by_clear_container'].bind('click', Ace.clear_container)
     <label>Filename: <input type="text" id="by_filename" placeholder="input file name"/>.py</label>
     <input type="submit" value="Save" onclick="doSave('by_py_src', 'by_filename');"/>
 </form>
-
-<p><button id="by_run">Run</button>
+<button id="by_run">Run</button>
 <button id="by_show_console">Output</button>
 <button id="by_clear_console">清除</button>
 <button id="by_clear_container">清除畫布</button>
 <div style="width:100%;height:100%;">
 <textarea id="by_console" autocomplete="off"></textarea>
 </div>
-<div id="by_container"></div></p>
+<div id="by_container"></div>
+
 <!-- Brython 動畫 -->
 
-<p>以下網際動態繪圖程式, 僅提供參考.</p>
+以下網際動態繪圖程式, 僅提供參考.
+
 <script type="text/python3">
 from browser import document as doc
 import ace
@@ -572,7 +363,7 @@ def set_clock():
     ctx.fillStyle = "#FFF"
     ctx.arc(width/2,height/2,ray*0.89,0,2*math.pi)
     ctx.fill()
-
+    
     # redraw hours
     show_hours()
 
@@ -597,7 +388,7 @@ def set_clock():
     second = now.second+now.microsecond/1000000
     angle = second*2*math.pi/60 - math.pi/2
     needle(angle,0.05,0.85,"#FF0000") # in red
-
+    
 browser.timer.set_interval(set_clock,100)
 
 ctx.beginPath()
@@ -664,21 +455,26 @@ doc['clock_clear_container'].bind('click', Ace.clear_container)
     <label>Filename: <input type="text" id="clock_filename" placeholder="input file name"/>.py</label>
     <input type="submit" value="Save" onclick="doSave('clock_py_src', 'clock_filename');"/>
 </form>
-
-<p><button id="clock_run">Run</button>
+<button id="clock_run">Run</button>
 <button id="clock_show_console">Output</button>
 <button id="clock_clear_console">清除</button>
 <button id="clock_clear_container">清除畫布</button>
 <div style="width:100%;height:100%;">
 <textarea id="clock_console" autocomplete="off"></textarea>
 </div>
-<div id="clock_container"></div></p>
-<h2>基本物件導向與案例</h2>
-<p>Python 採用類別 (class) 將案例變數 (instance variables) 與案例方法 (instance methods) 包在一起, 並用來定義一種物件 (object).</p>
-<p>物件導向具有封裝 (encapsulation) , 繼承 (inheritance) 與多形 ( polymorphism) 等三種特性.</p>
+<div id="clock_container"></div>
+
+基本物件導向與案例
+---
+
+Python 採用類別 (class) 將案例變數 (instance variables) 與案例方法 (instance methods) 包在一起, 並用來定義一種物件 (object).
+
+物件導向具有封裝 (encapsulation) , 繼承 (inheritance) 與多形 ( polymorphism) 等三種特性.
+
 <!-- oop 範例 -->
 
-<p>使用者可以利用下列程式練習 Python3 物件的定義與應用.</p>
+使用者可以利用下列程式練習 Python3 物件的定義與應用.
+
 <script type="text/python3">
 from browser import document as doc
 import ace
@@ -731,16 +527,17 @@ doc['oop1_clear_console'].bind('click', Ace.clear_console)
     <label>Filename: <input type="text" id="oop1_filename" placeholder="input file name"/>.py</label>
     <input type="submit" value="Save" onclick="doSave('oop1_py_src', 'oop1_filename');"/>
 </form>
-
-<p><button id="oop1_run">Run</button>
+<button id="oop1_run">Run</button>
 <button id="oop1_show_console">Output</button>
 <button id="oop1_clear_console">清除</button>
 <div style="width:100%;height:100%;">
 <textarea id="oop1_console" autocomplete="off"></textarea>
-</div></p>
+</div>
+
 <!-- 必須處理重複執行後機構模擬產生錯誤的問題 -->
 
-<p>以下平面機構動態模擬程式, 僅提供參考.</p>
+以下平面機構動態模擬程式, 僅提供參考.
+
 <script type="text/python3">
 from browser import document as doc
 import ace
@@ -753,24 +550,24 @@ from browser import window
 from browser import timer
 from browser import html
 import math
-
+ 
 # 利用 window 擷取 PrairieDraw 程式庫變數物件, 然後以 new 方法轉為 Brython 變數
 pdraw = window.PrairieDraw.new
 # 利用 window 擷取 PrairieDrawAnim 程式庫變數物件, 然後以 new 方法轉為 Brython 變數
 PrairieDrawAnim = window.PrairieDrawAnim.new
-
+ 
 # 利用 window 擷取 sylvester 程式庫變數物件 Vector, 並將其 create 方法直接轉為 Brython 變數
 # 在 sylvester 中的 $V 簡化變數無法直接在 Brython 程式中引用
 vector = window.Vector.create
-
+ 
 # 在 "fourbar" 畫布中建立 panim 動態模擬案例
 panim = PrairieDrawAnim("fourbar")
-
+ 
 # 平面連桿繪圖以 t = 0 起始
 t = 0
 # 控制轉動方向變數
 direction = True
-
+ 
 # 繪製不同 t 時間下的平面連桿
 def draw():
     global t, direction, fast
@@ -778,7 +575,7 @@ def draw():
     panim.setUnits(6, 6)
     # 設定箭頭線寬
     panim.setProp("arrowLineWidthPx",2)
-
+ 
     # 起始變數設定
     omega = 1
     length_bar1 = 1
@@ -786,11 +583,11 @@ def draw():
     length_bar3 = 2
     length_base = 40/18
     time = 0
-
+ 
     # 畫出地面直線
     G = vector([0, -0.5])
     panim.ground(G, vector([0, 1]), 10)
-
+ 
     # 連桿長度與角度計算
     A = t*omega # "theta"
     AD = length_bar1 #length of left bar
@@ -803,13 +600,13 @@ def draw():
     DBC = math.asin(AD * math.sin(A) / BD)
     B = ABD + DBC
     D = math.pi - B - C
-
+ 
     # draw pivot
     pivot_left = vector([AB/-2, 0])
     pivot_right = vector([AB/2, 0])
     panim.pivot(vector([pivot_left.e(1), -0.5]), pivot_left, 0.5)
     panim.pivot(vector([pivot_right.e(1), -0.5]), pivot_right, 0.5)
-
+ 
     # 儲存轉換矩陣
     panim.save()
     #FIRST BAR
@@ -817,14 +614,14 @@ def draw():
     panim.rotate(A)
     panim.rod(vector([0,0]), vector([AD,0]), 0.25)
     panim.point(vector([0,0]))
-
+ 
     #SECOND BAR
     panim.translate(vector([AD,0]))
     panim.rotate(A*-1)  #"undo" the original A rotation
     panim.rotate(D)     #rotate by D only
     panim.rod(vector([0,0]), vector([CD,0]), 0.25)
     panim.point(vector([0,0]))
-
+ 
     #THIRD BAR
     panim.translate(vector([CD,0]))
     panim.rotate(math.pi+C)
@@ -832,20 +629,20 @@ def draw():
     panim.point(vector([0,0]))
     # 回復原先的轉換矩陣
     panim.restore()
-
+ 
     panim.point(vector([pivot_right.e(1), 0]))
     # 時間增量
     if direction == True:
         t += 0.08
     else:
         t += -0.08
-
+ 
 # 先畫出 t = 0 的連桿機構
 draw()
-
+ 
 # 將 anim 設為 None
 anim = None
-
+ 
 def launchAnimation(ev):
     global anim
     # 初始啟動, anim 為 None
@@ -864,7 +661,7 @@ def launchAnimation(ev):
         timer.clear_interval(anim)
         anim = 'hold'
         doc['power'].text = '繼續'
-
+ 
 def reverse(ev):
     global anim, direction
     # 當 anim 為 hold 時, 按鈕無效
@@ -896,8 +693,7 @@ doc['link_clear_console'].bind('click', Ace.clear_console)
     <label>Filename: <input type="text" id="link_filename" placeholder="input file name"/>.py</label>
     <input type="submit" value="Save" onclick="doSave('link_py_src', 'link_filename');"/>
 </form>
-
-<p><button id="link_run">Run</button>
+<button id="link_run">Run</button>
 <button id="link_show_console">Output</button>
 <button id="link_clear_console">清除</button>
 <button id="power">啟動</button>
@@ -905,9 +701,13 @@ doc['link_clear_console'].bind('click', Ace.clear_console)
 <div style="width:100%;height:100%;">
 <textarea id="link_console" autocomplete="off"></textarea>
 </div>
-<canvas id="fourbar" width="250" height="250"></canvas></p>
-<h2>平面機構運動模擬</h2>
-<p>以下為 Jansen's 八連桿機構的基本 Kinematic 運算, 先採用 Sympy 以符號式推導出機構端點的運動軌跡方程式後, 利用 Python 執行數值分析運算, 列出機構端點的座標.</p>
+<canvas id="fourbar" width="250" height="250"></canvas>
+
+平面機構運動模擬
+---
+
+以下為 Jansen's 八連桿機構的基本 Kinematic 運算, 先採用 Sympy 以符號式推導出機構端點的運動軌跡方程式後, 利用 Python 執行數值分析運算, 列出機構端點的座標.
+
 <script type="text/python3">
 from browser import document as doc
 # 表示要導入 data/py/ace.py
@@ -1002,19 +802,26 @@ doc['jansen_clear_console'].bind('click', Ace.clear_console)
     <label>Filename: <input type="text" id="jansen_filename" placeholder="input file name"/>.py</label>
     <input type="submit" value="Save" onclick="doSave('jansen_py_src', 'jansen_filename');"/>
 </form>
-
-<p><button id="jansen_run">Run</button>
+<button id="jansen_run">Run</button>
 <button id="jansen_show_console">Output</button>
 <button id="jansen_clear_console">清除</button>
 <div style="width:100%;height:100%;">
 <textarea id="jansen_console" autocomplete="off"></textarea>
-</div></p>
-<p>以下為與上述 Jansen's 八連桿機構對應的座標驗證圖, 機構端點座標 kx= -30.81 ky= -84.02:</p>
-<p><img src="./../images/jansen_sympy.png" width="800" height="600"></img></p>
-<h2>平面機構數目合成</h2>
-<p>itertools module implements a number of iterator building blocks.</p>
-<p>itertools.product(*iterables, repeat=1) - Cartesian product of input iterables.</p>
-<p>根據 <a href="http://www.iftomm2015.tw/IFToMM2015CD/PDF/OS2-048.pdf">http://www.iftomm2015.tw/IFToMM2015CD/PDF/OS2-048.pdf</a> (or <a href="./../data/pdf/An_Algorithm_for_the_Automatic_Sketching_of_Generalized_Kinematic_Chains.pdf">local download</a>)</p>
+</div>
+
+以下為與上述 Jansen's 八連桿機構對應的座標驗證圖, 機構端點座標 kx= -30.81 ky= -84.02:
+
+<img src="./../images/jansen_sympy.png" width="800" height="600"></img>
+
+平面機構數目合成
+---
+
+itertools module implements a number of iterator building blocks.
+
+itertools.product(*iterables, repeat=1) - Cartesian product of input iterables.
+
+根據 <a href="http://www.iftomm2015.tw/IFToMM2015CD/PDF/OS2-048.pdf">http://www.iftomm2015.tw/IFToMM2015CD/PDF/OS2-048.pdf</a> (or <a href="./../data/pdf/An_Algorithm_for_the_Automatic_Sketching_of_Generalized_Kinematic_Chains.pdf">local download</a>)
+
 <script type="text/python3">
 from browser import document as doc
 # 表示要導入 data/py/ace.py
@@ -1030,7 +837,7 @@ class NumberSynthesis:
     def __init__(self, NL, NJ):
         self.NL = NL
         self.NJ = NJ
-
+ 
     @property
     def Mmax(self):
         if self.NL <= self.NJ and self.NJ <= (2*self.NL-3):
@@ -1039,7 +846,7 @@ class NumberSynthesis:
             return self.NL - 1
         else:
             raise ValueError("incorrect number.")
-
+ 
     @property
     def NLm(self):
         result = []
@@ -1050,7 +857,7 @@ class NumberSynthesis:
             if correction(answer) and NLMmax>=0:
                 result.append(answer)
         return tuple(result)
-
+ 
 a = NumberSynthesis(9, 11)
 print("the maximum number of joints incident to a link: ", a.Mmax)
 print("link assortments of the generalized kinematic chains: ", a.NLm)
@@ -1074,100 +881,14 @@ doc['numsyn_clear_console'].bind('click', Ace.clear_console)
     <label>Filename: <input type="text" id="numsyn_filename" placeholder="input file name"/>.py</label>
     <input type="submit" value="Save" onclick="doSave('numsyn_py_src', 'numsyn_filename');"/>
 </form>
-
-<p><button id="numsyn_run">Run</button>
+<button id="numsyn_run">Run</button>
 <button id="numsyn_show_console">Output</button>
 <button id="numsyn_clear_console">清除</button>
 <div style="width:100%;height:100%;">
 <textarea id="numsyn_console" autocomplete="off"></textarea>
-</div></p>
-<p>目前所在頁面, 分別利用 <a href="http://brython.info/">Brython</a> 與 <a href="https://ace.c9.io/">Ace</a> 編輯器, 可直接在網誌中執行 Python3 程式, 基本架構為將 <a href="http://brython.info/">Brython</a> 的標準輸出轉到特定 div 標註, 而 <a href="https://ace.c9.io/">Ace</a> 編輯器則設為與其內的程式碼相同長度, 但至多只會在頁面中顯示 20 行, 且編輯器內的程式碼使用 12 號字元.</p>
-<p>ace.py 原始碼, 位於 static 目錄中, 將原先只能單一呼叫的函式改為物件, 可以在同一頁面中產生案例時, 透過各標註的 id 字串區分各段程式碼, 是本課程 Python3 物件導向程式的實際應用範例, 謹提供參考.</p>
-            </section>
+</div>
 
-            <section class="post-info">
-                <div class="post-share">
-                    <a class="twitter" href="https://twitter.com/share?text=Python Getting Started&amp;url=https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/2018-Fall-Python-Getting-Started.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
-                    </a>
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/2018-Fall-Python-Getting-Started.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
-                    </a>
-                    <a class="googleplus" href="https://plus.google.com/share?url=https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/2018-Fall-Python-Getting-Started.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
-                    </a>
-                    <div class="clear"></div>
-                </div>
+目前所在頁面, 分別利用 <a href="http://brython.info/">Brython</a> 與 <a href="https://ace.c9.io/">Ace</a> 編輯器, 可直接在網誌中執行 Python3 程式, 基本架構為將 <a href="http://brython.info/">Brython</a> 的標準輸出轉到特定 div 標註, 而 <a href="https://ace.c9.io/">Ace</a> 編輯器則設為與其內的程式碼相同長度, 但至多只會在頁面中顯示 20 行, 且編輯器內的程式碼使用 12 號字元.
 
-                <aside class="post-tags">
-<a href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/tag/2018fallcp.html">2018FallCP</a>                </aside>
+ace.py 原始碼, 位於 static 目錄中, 將原先只能單一呼叫的函式改為物件, 可以在同一頁面中產生案例時, 透過各標註的 id 字串區分各段程式碼, 是本課程 Python3 物件導向程式的實際應用範例, 謹提供參考.
 
-                <div class="clear"></div>
-
-
-                </section>
-
-                <script type="text/javascript">
-                    var disqus = 'kmolab-github';
-                    var disqus_shortname = 'kmolab-github';
-                    var disqus_identifier = '/2018-Fall-Python-Getting-Started.html';
-                    var disqus_url = 'https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/2018-Fall-Python-Getting-Started.html';
-                </script>
-                <noscript>Please enable JavaScript to view the comments.</noscript>
-                <section class="post-comments">
-                        <a id="show-disqus" class="post-comments-activate" data-disqus-identifier="/2018-Fall-Python-Getting-Started.html" >Show Comments</a>
-                    <div id="disqus_thread"></div>
-                </section>
-
-                <aside class="post-nav">
-                    <a class="post-nav-next" href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0222.html">
-                        <section class="post-nav-teaser">
-                            <i class="ic ic-arrow-left"></i>
-                                <h2 class="post-nav-title">Week1</h2>
-                            <p class="post-nav-excerpt"></p>
-                        </section>
-                    </a>
-                    <a class="post-nav-prev" href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/PythonGettingStarted.html">
-                        <section class="post-nav-teaser">
-                            <i class="ic ic-arrow-right"></i>
-                                <h2 class="post-nav-title">Python Getting Started</h2>
-                            <p class="post-nav-excerpt">以下程式架構取自 http://lab.kmol.info/blog/brython-programming-environment.html, 使用 static/py/...</p>
-                        </section>
-                    </a>
-                    <div class="clear"></div>
-                </aside>
-
-            </div>
-        </article>
-    </main>
-      <!-- TODO : Body class -->
-    <div id="body-class" style="display: none;" class=""></div>
-
-    <footer id="footer">
-      <div class="inner">
-        <section class="credits">
-
-
-          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
-          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
-        </section>
-      </div>
-    </footer>
-  </section>
-  
-  <script type="text/javascript" src="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/theme/js/script.js"></script>
-
-<script type="text/javascript">
-    var disqus_shortname = 'kmolab-github';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
- 
-
-
-</body>
-</html>
