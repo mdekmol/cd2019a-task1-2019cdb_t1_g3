@@ -79,7 +79,26 @@ $(document).ready(doSearch);
 </ul>
 </confmenu></header>
 <div class='container'><nav><ul id='css3menu1' class='topmenu'><div class="tipue_search_group"><input style="width: 6vw;" type="text" name="q" id="tipue_search_input" pattern=".{2,}" title="Press enter key to search" required></div><li><a href='Introduction.html'>Introduction</a><li><a href='Course.html'>Course</a><ul><li><a href='week1.html'>week1</a><li><a href='week2.html'>week2</a><li><a href='week3.html'>week3</a></li></ul><li><a href='Independent study.html'>Independent study</a><ul><li><a href='w1.html'>w1</a><li><a href='w2.html'>w2</a><li><a href='w3.html'>w3</a></li></ul><li><a href='Experience.html'>Experience</a><ul><li><a href='2019.02.22.html'>2019.02.22</a><li><a href='2019.03.01.html'>2019.03.01</a><li><a href='2019.03.08.html'>2019.03.08</a><li><a href='2019.03.15.html'>2019.03.15</a><li><a href='2019.03.22.html'>2019.03.22</a></li></ul><li><a href='Git http and ssh.html'>Git http and ssh</a><li><a href='Directory Structure.html'>Directory Structure</a><li><a href='Page editing.html'>Page editing</a><ul><li><a href='Insert code.html'>Insert code</a><ul><li><a href='Java cold.html'>Java cold</a><li><a href='Python cold.html'>Python cold</a><li><a href='C   C++ cold.html'>C   C++ cold</a><li><a href='Lua  cold.html'>Lua  cold</a><li><a href='Javascript  cold.html'>Javascript  cold</a><li><a href='Internet newsletter.html'>Internet newsletter</a><li><a href='Blog edit.html'>Blog edit</a></li></li></ul></ul><li><a href='Q & A.html'>Q & A</a></li></ul></nav><section><div id="tipue_search_content">week2 << <a href='week2.html'>Previous</a> <a href='Independent study.html'>Next</a> >> Independent study<br /><h1>week3</h1>
+<p>修改start.bat，以及<yt-formatted-string class="style-scope ytd-video-primary-info-renderer" force-default-style="">如何在可攜程式系統中配置 ungit</yt-formatted-string></p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/lB-spECfhr8" width="550"></iframe></p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/ojydOkBXuxQ" width="560"></iframe></p>
+<p class="title style-scope ytd-video-primary-info-renderer"><yt-formatted-string class="style-scope ytd-video-primary-info-renderer" force-default-style="">利用 ungit 在倉儲個提交點設定 tag, 然後利用 git checkout 指令帶出各版本內容</yt-formatted-string></p>
+<p class="title style-scope ytd-video-primary-info-renderer"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/MB4ELQJje_A" width="550"></iframe></p>
+<p><span></span></p>
+<p><span></span></p>
+<p><span></span></p>
 <p>根據 <a href="https://2019wcm.blogspot.com/2019/03/ungit.html">https://2019wcm.blogspot.com/2019/03/ungit.html</a> 的設定, 完成 ungit 配置.</p>
+<p>1.<span>下載 ungit 與 node.js 程式碼</span></p>
+<p>2.<span>解開壓縮檔案, 然後將 nodejs 放入 kmol_2019 的 data 目錄中</span></p>
+<p>3.<span>設定啟動 start.bat 中的 ungit 命列列搜尋路徑</span></p>
+<p><span>set path8=%Disk%:\nodejs;%Disk%:\nodejs\appdata\roaming\npm;</span></p>
+<p><span></span></p>
+<p><span>4.將 path8 納入 path 設定</span></p>
+<p><span>path=%path%;%path1%;%path2%;%path3%;%path4%;%path5%;%path6%;%path7%;%Disk%:\p37\site-packages\scipy\extra_dll;%Disk%:\scite\bin;<span style="color: #ff0000;">%path8%;</span></span></p>
+<p><span><span style="color: #ff0000;"></span></span></p>
+<p><span>5.為了讓 node.js 能夠使用 y:\home 作為使用者目錄, 在 start.bat 中加入<br/></span></p>
+<p><span>set USERPROFILE=%Disk%:\home</span></p>
+<p><span></span></p>
 <p>ssh 連結 github 倉儲</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">ProxyCommand y:/PortableGit/mingw64/bin/connect.exe -H proxy.kmol.info:3128 %h %p
 
