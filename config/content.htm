@@ -89,7 +89,35 @@ Host github.com_mdecourse
 <p><img alt="" height="429" src="/images/2019-04-11_22-14-12.gif" width="800"/></p>
 <p style="text-align: center;">                                                                                                                                                                      ▲BubbleRob</p>
 <h3>BubbleRob</h3>
-<h1>Experience</h1>
+<ul style="list-style-type: disc;">
+<li>Add a primitive sphere of diameter 0.2 to the scene with [Menu bar --&gt; Add --&gt; Primitive shape --&gt; Sphere].</li>
+<li>Adjust the X-size item to 0.2, then click OK. <br/>-1</li>
+<li>Start the simulation (&lt;control-space&gt;, and copy-and-paste the created sphere (with &lt;control-c&gt; then &lt;control-v&gt;)<br/><img alt="" height="481" src="/images/1.gif" width="800"/></li>
+<li>Enable Collidable, Measurable, Renderable and Detectable in the object common properties for that shape.<br/><img alt="" height="429" src="/images/02.png" width="800"/></li>
+<li>Open the position dialog on the translation tab, select the sphere representing BubbleRob's body, and enter 0.02 for Along Z.</li>
+<li>Make sure that the Relative to-item is set to World. Then we click Translate selection.</li>
+<li>Edit sphere's name. We enter bubbleRob and press enter.<br/><img alt="" height="481" src="/images/03.png" width="800"/></li>
+<li>Add a proximity sensor so that BubbleRob knows when it is approaching obstacles: we select [Menu bar --&gt; Add --&gt; Proximity sensor --&gt; Cone type].</li>
+<li>In the orientation dialog on the orientation tab, we enter 90 for Around Y and for Around Z, then click Rotate selection.<br/><img alt="" height="481" src="/images/04.png" width="800"/></li>
+<li>In the position dialog, on the position tab, we enter 0.1 for X-coord. and 0.12 for Z-coord.<br/><img alt="" height="481" src="/images/05.png" width="800"/></li>
+<li>Open its properties dialog.</li>
+<li>Click Show volume parameter to open the proximity sensor volume dialog.</li>
+<li>Adjust items Offset to 0.005, Angle to 30 and Range to 0.15.<br/><img alt="" height="481" src="/images/06.png" width="800"/></li>
+<li>In the proximity sensor properties, we click Show detection parameters.</li>
+<li>Uncheck item Don't allow detections if distance smaller than then close that dialog again.<br/><img alt="" height="481" src="/images/07.png" width="800"/></li>
+<li>Edit proximity sensor's name. We enter bubbleRob_sensingNose and press enter.<br/>Select bubbleRob_sensingNose, then control-select bubbleRob, then click [Menu bar --&gt; Edit --&gt; Make last selected object parent].<br/><img alt="" height="481" src="/images/08.png" width="800"/></li>
+<li>This is what we now have:<br/><img alt="" height="258" src="/images/08.1.png" width="500"/></li>
+<li>Create a new scene with [Menu bar --&gt; File --&gt; New scene].<br/>-9</li>
+<li>Enable Collidable, Measurable, Renderable and Detectable in the object common properties for that cylinder.<br/><img alt="" height="429" src="/images/10.png" width="800"/></li>
+<li>Set the cylinder's absolute position to (0.05,0.1,0.04) and its absolute orientation to (-90,0,0).<br/><img alt="" height="429" src="/images/11.png" width="800"/><br/><img alt="" height="429" src="/images/12.png" width="800"/></li>
+<li>Change the name to bubbleRob_leftWheel.</li>
+<li>Copy and paste the wheel, and set the absolute Y coordinate of the copy to -0.1.<br/><img alt="" height="429" src="/images/13.png" width="800"/></li>
+<li>We rename the copy to bubbleRob_rightWheel.</li>
+<li>Select the two wheels, copy them, then switch back to scene 1, then paste the wheels.</li>
+<li>Click [Menu bar --&gt; Add --&gt; Joint --&gt; Revolute] to add a revolute joint to the scene.</li>
+<li>Keep the joint selected, then control-select bubbleRob_leftWheel. In the Position dialog, on the position tab, we click the Apply to selection button.<br/><img alt="" height="481" src="/images/14.png" width="800"/></li>
+<li>Click Show dynamic parameters to open the joint dynamics properties dialog.<br/><img alt="" height="481" src="/images/15.png" width="800"/></li>
+</ul><h1>Experience</h1>
 <h2>2019.03.15</h2>
 <h3>40423207-4</h3>
 <h3>40423160-4</h3>
