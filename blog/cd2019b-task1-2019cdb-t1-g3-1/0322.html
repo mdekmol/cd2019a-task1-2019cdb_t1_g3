@@ -333,7 +333,6 @@ Set the Far clipping plane item to 1, and the Resolution x and Resolution y item
 <p>選擇bubbleRob並點擊[菜單欄 - &gt;添加 - &gt;關聯的子腳本 - &gt;非線程]。</p>
 <p>copy and paste following code into the script editor</p>
 <p>將以下代碼複製並粘貼到腳本編輯器中</p>
-<hr>
 <p>function speedChange_callback(ui,id,newVal)
     speed=minMaxSpeed[1]+(minMaxSpeed[2]-
 minMaxSpeed[1])<em>newVal/100
@@ -356,28 +355,24 @@ script is executed
     ui=simUI.create(xml)
     speed=(minMaxSpeed[1]+minMaxSpeed[2])</em>0.5
     simUI.setSliderValue(ui,1,100*(speed-minMaxSpeed[1])/(minMaxSpeed[2]-minMaxSpeed[1]))
-end</p>
-<p>function sysCall_actuation()
+end
+function sysCall_actuation()
     result=sim.readProximitySensor(noseSensor) -- Read the proximity sensor
     -- If we detected something, we set the backward mode:
-    if (result&gt;0) then backUntilTime=sim.getSimulationTime()+4 end </p>
-<div class="highlight"><pre><span></span>if (backUntilTime&amp;lt;sim.getSimulationTime()) then
-    -- When in forward mode, we simply move forward at the desired speed
-    sim.setJointTargetVelocity(leftMotor,speed)
-    sim.setJointTargetVelocity(rightMotor,speed)
-else
-    -- When in backward mode, we simply backup in a curve at reduced speed
-    sim.setJointTargetVelocity(leftMotor,-speed/2)
-    sim.setJointTargetVelocity(rightMotor,-speed/8)
-end
-</pre></div>
-
-
-<p>end</p>
+    if (result&gt;0) then backUntilTime=sim.getSimulationTime()+4 end
+    if (backUntilTime&lt;sim.getSimulationTime()) then
+        -- When in forward mode, we simply move forward at the desired speed
+        sim.setJointTargetVelocity(leftMotor,speed)
+        sim.setJointTargetVelocity(rightMotor,speed)
+    else
+        -- When in backward mode, we simply backup in a curve at reduced speed
+        sim.setJointTargetVelocity(leftMotor,-speed/2)
+        sim.setJointTargetVelocity(rightMotor,-speed/8)
+    end
+end</p>
 <p>function sysCall_cleanup()
     simUI.destroy(ui)
 end</p>
-<hr>
             </section>
 
             <section class="post-info">
