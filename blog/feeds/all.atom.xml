@@ -150,8 +150,8 @@ function sysCall_actuation()
         sim.setJointTargetVelocity(leftMotor,-speed/2)
         sim.setJointTargetVelocity(rightMotor,-speed/8)
     end
-end&lt;/p&gt;
-&lt;p&gt;function sysCall_cleanup()
+end
+function sysCall_cleanup()
     simUI.destroy(ui)
 end&lt;/p&gt;</content><category term="2018FallCP"></category></entry><entry><title>Week4</title><link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0315.html" rel="alternate"></link><published>2019-03-15T16:00:00+08:00</published><updated>2019-03-15T16:00:00+08:00</updated><author><name>yen</name></author><id>tag:mdekmol.github.io,2019-03-15:/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0315.html</id><summary type="html">&lt;p&gt;配置 ungit
 下載 ungit 與 node.js 程式碼&lt;/p&gt;
