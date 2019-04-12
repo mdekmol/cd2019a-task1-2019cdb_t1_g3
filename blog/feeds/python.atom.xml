@@ -114,46 +114,105 @@ Set the Far clipping plane item to 1, and the Resolution x and Resolution y item
 &lt;p&gt;選擇bubbleRob並點擊[菜單欄 - &amp;gt;添加 - &amp;gt;關聯的子腳本 - &amp;gt;非線程]。&lt;/p&gt;
 &lt;p&gt;copy and paste following code into the script editor&lt;/p&gt;
 &lt;p&gt;將以下代碼複製並粘貼到腳本編輯器中&lt;/p&gt;
-&lt;p&gt;function speedChange_callback(ui,id,newVal)
-    speed=minMaxSpeed[1]+(minMaxSpeed[2]-
-minMaxSpeed[1])&lt;em&gt;newVal/100
+&lt;hr&gt;
+&lt;p&gt;function speedChange_callback(ui,id,newVal)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;speed=minMaxSpeed[1]+(minMaxSpeed[2]-
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;minMaxSpeed[1])*newVal/100&lt;/p&gt;
+&lt;p&gt;end&lt;/p&gt;
+&lt;p&gt;function sysCall_init()&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;-- This is executed exactly once, the first time this
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;script is executed&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;bubbleRobBase=sim.getObjectAssociatedWithScript
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;(sim.handle_self) -- this is bubbleRob's handle&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;leftMotor=sim.getObjectHandle(&amp;quot;bubbleRob_leftMo
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;tor") -- Handle of the left motor&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rightMotor=sim.getObjectHandle(&amp;quot;bubbleRob_rightMotor&amp;quot;) -- Handle of the right motor
+
+noseSensor=sim.getObjectHandle(&amp;quot;bubbleRob_sensingNose&amp;quot;) -- Handle of the proximity sensor
+
+minMaxSpeed={50*math.pi/180,300*math.pi/180}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;-- Min and max speeds for each motor&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;backUntilTime=-1 -- Tells whether bubbleRob is in
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;forward or backward mode&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;--&lt;/span&gt; &lt;span class="nt"&gt;Create&lt;/span&gt; &lt;span class="nt"&gt;the&lt;/span&gt; &lt;span class="nt"&gt;custom&lt;/span&gt; &lt;span class="nt"&gt;UI&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+    &lt;span class="nt"&gt;xml&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;amp;lt;ui title=&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;sim&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;getObjectName&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;bubbleRobBase&lt;/span&gt;&lt;span class="o"&gt;)..&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; speed&amp;quot; closeable=&amp;quot;false&amp;quot; resizeable=&amp;quot;false&amp;quot; activate=&amp;quot;false&amp;quot;&amp;amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx nx-Member"&gt;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;hslider&lt;/span&gt; &lt;span class="n"&gt;minimum&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;maximum&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;100&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;onchange&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;speedChange_callback&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;/&amp;amp;&lt;/span&gt;&lt;span class="nb"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx nx-Member"&gt;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;label&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;* {margin-left: 300px;}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;/&amp;amp;&lt;/span&gt;&lt;span class="nb"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx nx-Member"&gt;lt&lt;/span&gt;&lt;span class="p"&gt;;/&lt;/span&gt;&lt;span class="nx"&gt;ui&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx nx-Member"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+
+&lt;span class="nt"&gt;ui&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nt"&gt;simUI&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;create&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;xml&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+
+&lt;span class="nt"&gt;speed&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;span class="nt"&gt;minMaxSpeed&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;minMaxSpeed&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;)*&lt;/span&gt;&lt;span class="nt"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;5&lt;/span&gt;
+
+&lt;span class="nt"&gt;simUI&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;setSliderValue&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;ui&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nt"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nt"&gt;100&lt;/span&gt;&lt;span class="o"&gt;*(&lt;/span&gt;&lt;span class="nt"&gt;speed-minMaxSpeed&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;)/(&lt;/span&gt;&lt;span class="nt"&gt;minMaxSpeed&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="nt"&gt;-minMaxSpeed&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;end&lt;/p&gt;
+&lt;p&gt;function sysCall_actuation()&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;result=sim.readProximitySensor(noseSensor) -- Read
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;the proximity sensor&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;-- If we detected something, we set the backward
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;mode:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;if (result&amp;amp;gt;0) then
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;backUntilTime=sim.getSimulationTime()+4 end&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;if (backUntilTime&amp;amp;lt;sim.getSimulationTime()) then
+
+    -- When in forward mode, we simply move forward at the desired speed
+
+    sim.setJointTargetVelocity(leftMotor,speed)
+
+    sim.setJointTargetVelocity(rightMotor,speed)
+
+else
+
+    -- When in backward mode, we simply backup in a curve at reduced speed
+
+    sim.setJointTargetVelocity(leftMotor,-speed/2)
+
+    sim.setJointTargetVelocity(rightMotor,-speed/8)
+
 end
- function sysCall_init()
-    -- This is executed exactly once, the first time this 
-script is executed
-    bubbleRobBase=sim.getObjectAssociatedWithScript(sim.handle_self) -- this is bubbleRob's handle
-    leftMotor=sim.getObjectHandle("bubbleRob_leftMotor") -- Handle of the left motor
-    rightMotor=sim.getObjectHandle("bubbleRob_rightMotor") -- Handle of the right motor
-    noseSensor=sim.getObjectHandle("bubbleRob_sensingNose") -- Handle of the proximity sensor
-    minMaxSpeed={50&lt;/em&gt;math.pi/180,300&lt;em&gt;math.pi/180} -- Min and max speeds for each motor
-    backUntilTime=-1 -- Tells whether bubbleRob is in forward or backward mode
-    -- Create the custom UI:
-        xml = '&lt;ui title="'..sim.getObjectName(bubbleRobBase)..' speed" closeable="false" resizeable="false" activate="false"&gt;'..[[
-        &lt;hslider minimum="0" maximum="100" onchange="speedChange_callback" id="1"/&gt;
-        &lt;label text="" style="* {margin-left: 300px;}"/&gt;
-        &lt;/ui&gt;
-        ]]
-    ui=simUI.create(xml)
-    speed=(minMaxSpeed[1]+minMaxSpeed[2])&lt;/em&gt;0.5
-    simUI.setSliderValue(ui,1,100*(speed-minMaxSpeed[1])/(minMaxSpeed[2]-minMaxSpeed[1]))
-end
-function sysCall_actuation()
-    result=sim.readProximitySensor(noseSensor) -- Read the proximity sensor
-    -- If we detected something, we set the backward mode:
-    if (result&amp;gt;0) then backUntilTime=sim.getSimulationTime()+4 end
-    if (backUntilTime&amp;lt;sim.getSimulationTime()) then
-        -- When in forward mode, we simply move forward at the desired speed
-        sim.setJointTargetVelocity(leftMotor,speed)
-        sim.setJointTargetVelocity(rightMotor,speed)
-    else
-        -- When in backward mode, we simply backup in a curve at reduced speed
-        sim.setJointTargetVelocity(leftMotor,-speed/2)
-        sim.setJointTargetVelocity(rightMotor,-speed/8)
-    end
-end
-function sysCall_cleanup()
-    simUI.destroy(ui)
-end&lt;/p&gt;</content><category term="2018FallCP"></category></entry><entry><title>Week4</title><link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0315.html" rel="alternate"></link><published>2019-03-15T16:00:00+08:00</published><updated>2019-03-15T16:00:00+08:00</updated><author><name>yen</name></author><id>tag:mdekmol.github.io,2019-03-15:/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0315.html</id><summary type="html">&lt;p&gt;配置 ungit
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;end&lt;/p&gt;
+&lt;p&gt;function sysCall_cleanup()&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;simUI.destroy(ui)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;end&lt;/p&gt;
+&lt;hr&gt;</content><category term="2018FallCP"></category></entry><entry><title>Week4</title><link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0315.html" rel="alternate"></link><published>2019-03-15T16:00:00+08:00</published><updated>2019-03-15T16:00:00+08:00</updated><author><name>yen</name></author><id>tag:mdekmol.github.io,2019-03-15:/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0315.html</id><summary type="html">&lt;p&gt;配置 ungit
 下載 ungit 與 node.js 程式碼&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;根據 https://2019wcm.blogspot.com/search/label/ungit 完成ungit的配置&lt;/p&gt;

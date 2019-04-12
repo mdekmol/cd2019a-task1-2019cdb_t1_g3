@@ -333,46 +333,105 @@ Set the Far clipping plane item to 1, and the Resolution x and Resolution y item
 <p>選擇bubbleRob並點擊[菜單欄 - &gt;添加 - &gt;關聯的子腳本 - &gt;非線程]。</p>
 <p>copy and paste following code into the script editor</p>
 <p>將以下代碼複製並粘貼到腳本編輯器中</p>
-<p>function speedChange_callback(ui,id,newVal)
-    speed=minMaxSpeed[1]+(minMaxSpeed[2]-
-minMaxSpeed[1])<em>newVal/100
+<hr>
+<p>function speedChange_callback(ui,id,newVal)</p>
+<div class="highlight"><pre><span></span>speed=minMaxSpeed[1]+(minMaxSpeed[2]-
+</pre></div>
+
+
+<p>minMaxSpeed[1])*newVal/100</p>
+<p>end</p>
+<p>function sysCall_init()</p>
+<div class="highlight"><pre><span></span>-- This is executed exactly once, the first time this
+</pre></div>
+
+
+<p>script is executed</p>
+<div class="highlight"><pre><span></span>bubbleRobBase=sim.getObjectAssociatedWithScript
+</pre></div>
+
+
+<p>(sim.handle_self) -- this is bubbleRob's handle</p>
+<div class="highlight"><pre><span></span>leftMotor=sim.getObjectHandle(&quot;bubbleRob_leftMo
+</pre></div>
+
+
+<p>tor") -- Handle of the left motor</p>
+<div class="highlight"><pre><span></span>rightMotor=sim.getObjectHandle(&quot;bubbleRob_rightMotor&quot;) -- Handle of the right motor
+
+noseSensor=sim.getObjectHandle(&quot;bubbleRob_sensingNose&quot;) -- Handle of the proximity sensor
+
+minMaxSpeed={50*math.pi/180,300*math.pi/180}
+</pre></div>
+
+
+<p>-- Min and max speeds for each motor</p>
+<div class="highlight"><pre><span></span>backUntilTime=-1 -- Tells whether bubbleRob is in
+</pre></div>
+
+
+<p>forward or backward mode</p>
+<div class="highlight"><pre><span></span><span class="nt">--</span> <span class="nt">Create</span> <span class="nt">the</span> <span class="nt">custom</span> <span class="nt">UI</span><span class="o">:</span>
+
+    <span class="nt">xml</span> <span class="o">=</span> <span class="s1">&#39;&amp;lt;ui title=&quot;&#39;</span><span class="o">.</span><span class="p">.</span><span class="nc">sim</span><span class="p">.</span><span class="nc">getObjectName</span><span class="o">(</span><span class="nt">bubbleRobBase</span><span class="o">)..</span><span class="s1">&#39; speed&quot; closeable=&quot;false&quot; resizeable=&quot;false&quot; activate=&quot;false&quot;&amp;gt;&#39;</span><span class="o">..</span><span class="cp">[</span><span class="err">[</span>
+    <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">hslider</span> <span class="n">minimum</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">maximum</span><span class="o">=</span><span class="s2">&quot;100&quot;</span> <span class="n">onchange</span><span class="o">=</span><span class="s2">&quot;speedChange_callback&quot;</span> <span class="n">id</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="o">/&amp;</span><span class="nb">gt</span><span class="p">;</span>
+    <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">label</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;* {margin-left: 300px;}&quot;</span><span class="o">/&amp;</span><span class="nb">gt</span><span class="p">;</span>
+    <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;/</span><span class="nx">ui</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;</span>
+    <span class="cp">]</span><span class="o">]</span>
+
+<span class="nt">ui</span><span class="o">=</span><span class="nt">simUI</span><span class="p">.</span><span class="nc">create</span><span class="o">(</span><span class="nt">xml</span><span class="o">)</span>
+
+<span class="nt">speed</span><span class="o">=(</span><span class="nt">minMaxSpeed</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">+</span><span class="nt">minMaxSpeed</span><span class="cp">[</span><span class="mi">2</span><span class="cp">]</span><span class="o">)*</span><span class="nt">0</span><span class="p">.</span><span class="nc">5</span>
+
+<span class="nt">simUI</span><span class="p">.</span><span class="nc">setSliderValue</span><span class="o">(</span><span class="nt">ui</span><span class="o">,</span><span class="nt">1</span><span class="o">,</span><span class="nt">100</span><span class="o">*(</span><span class="nt">speed-minMaxSpeed</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">)/(</span><span class="nt">minMaxSpeed</span><span class="cp">[</span><span class="mi">2</span><span class="cp">]</span><span class="nt">-minMaxSpeed</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">))</span>
+</pre></div>
+
+
+<p>end</p>
+<p>function sysCall_actuation()</p>
+<div class="highlight"><pre><span></span>result=sim.readProximitySensor(noseSensor) -- Read
+</pre></div>
+
+
+<p>the proximity sensor</p>
+<div class="highlight"><pre><span></span>-- If we detected something, we set the backward
+</pre></div>
+
+
+<p>mode:</p>
+<div class="highlight"><pre><span></span>if (result&amp;gt;0) then
+</pre></div>
+
+
+<p>backUntilTime=sim.getSimulationTime()+4 end</p>
+<div class="highlight"><pre><span></span>if (backUntilTime&amp;lt;sim.getSimulationTime()) then
+
+    -- When in forward mode, we simply move forward at the desired speed
+
+    sim.setJointTargetVelocity(leftMotor,speed)
+
+    sim.setJointTargetVelocity(rightMotor,speed)
+
+else
+
+    -- When in backward mode, we simply backup in a curve at reduced speed
+
+    sim.setJointTargetVelocity(leftMotor,-speed/2)
+
+    sim.setJointTargetVelocity(rightMotor,-speed/8)
+
 end
- function sysCall_init()
-    -- This is executed exactly once, the first time this 
-script is executed
-    bubbleRobBase=sim.getObjectAssociatedWithScript(sim.handle_self) -- this is bubbleRob's handle
-    leftMotor=sim.getObjectHandle("bubbleRob_leftMotor") -- Handle of the left motor
-    rightMotor=sim.getObjectHandle("bubbleRob_rightMotor") -- Handle of the right motor
-    noseSensor=sim.getObjectHandle("bubbleRob_sensingNose") -- Handle of the proximity sensor
-    minMaxSpeed={50</em>math.pi/180,300<em>math.pi/180} -- Min and max speeds for each motor
-    backUntilTime=-1 -- Tells whether bubbleRob is in forward or backward mode
-    -- Create the custom UI:
-        xml = '<ui title="'..sim.getObjectName(bubbleRobBase)..' speed" closeable="false" resizeable="false" activate="false">'..[[
-        <hslider minimum="0" maximum="100" onchange="speedChange_callback" id="1"/>
-        <label text="" style="* {margin-left: 300px;}"/>
-        </ui>
-        ]]
-    ui=simUI.create(xml)
-    speed=(minMaxSpeed[1]+minMaxSpeed[2])</em>0.5
-    simUI.setSliderValue(ui,1,100*(speed-minMaxSpeed[1])/(minMaxSpeed[2]-minMaxSpeed[1]))
-end
-function sysCall_actuation()
-    result=sim.readProximitySensor(noseSensor) -- Read the proximity sensor
-    -- If we detected something, we set the backward mode:
-    if (result&gt;0) then backUntilTime=sim.getSimulationTime()+4 end
-    if (backUntilTime&lt;sim.getSimulationTime()) then
-        -- When in forward mode, we simply move forward at the desired speed
-        sim.setJointTargetVelocity(leftMotor,speed)
-        sim.setJointTargetVelocity(rightMotor,speed)
-    else
-        -- When in backward mode, we simply backup in a curve at reduced speed
-        sim.setJointTargetVelocity(leftMotor,-speed/2)
-        sim.setJointTargetVelocity(rightMotor,-speed/8)
-    end
-end
-function sysCall_cleanup()
-    simUI.destroy(ui)
-end</p>
+</pre></div>
+
+
+<p>end</p>
+<p>function sysCall_cleanup()</p>
+<div class="highlight"><pre><span></span>simUI.destroy(ui)
+</pre></div>
+
+
+<p>end</p>
+<hr>
             </section>
 
             <section class="post-info">
