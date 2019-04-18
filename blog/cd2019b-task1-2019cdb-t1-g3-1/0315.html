@@ -42,7 +42,7 @@
 
     <link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0315.html" rel="canonical" />
 
-        <meta name="description" content="配置 ungit 下載 ungit 與 node.js 程式碼 根據 https://2019wcm.blogspot.com/search/label/ungit 完成ungit的配置 1.下載 kmol-2019.7z , 接著再下載...">
+        <meta name="description" content="配置 ungit 下載 ungit 與 node.js 程式碼 根據 https://2019wcm.blogspot.com/search/label/ungit 完成ungit的配置 1.下載 kmol-2019.7z , nodejs-with-ungit.7z...">
 
         <meta name="author" content="yen">
 
@@ -54,7 +54,7 @@
 <!-- Open Graph -->
 <meta property="og:site_name" content="CMSimfly 網際內容管理"/>
 <meta property="og:title" content="Week4"/>
-<meta property="og:description" content="配置 ungit 下載 ungit 與 node.js 程式碼 根據 https://2019wcm.blogspot.com/search/label/ungit 完成ungit的配置 1.下載 kmol-2019.7z , 接著再下載..."/>
+<meta property="og:description" content="配置 ungit 下載 ungit 與 node.js 程式碼 根據 https://2019wcm.blogspot.com/search/label/ungit 完成ungit的配置 1.下載 kmol-2019.7z , nodejs-with-ungit.7z..."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0315.html"/>
 <meta property="og:type" content="article"/>
@@ -82,7 +82,7 @@
   },
   "image": "https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/theme/images/post-bg.jpg",
   "url": "https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0315.html",
-  "description": "配置 ungit 下載 ungit 與 node.js 程式碼 根據 https://2019wcm.blogspot.com/search/label/ungit 完成ungit的配置 1.下載 kmol-2019.7z , 接著再下載..."
+  "description": "配置 ungit 下載 ungit 與 node.js 程式碼 根據 https://2019wcm.blogspot.com/search/label/ungit 完成ungit的配置 1.下載 kmol-2019.7z , nodejs-with-ungit.7z..."
 }
 </script>
 <script type="text/javascript" src="./../data/syntaxhighlighter/shCore.js"></script>
@@ -228,13 +228,23 @@ init_mathjax();
 
 
 <p>根據 https://2019wcm.blogspot.com/search/label/ungit 完成ungit的配置</p>
-<p>1.下載  kmol-2019.7z , 接著再下載 nodejs-with-ungit.7z, 兩者分別解開壓縮檔案, 然後將 nodejs 放入 kmol_2019 的 data 目錄中.</p>
-<p>2.設定命令列搜尋路徑</p>
+<p>1.下載  <a href="https://drive.google.com/file/d/1Cw8mHRcHKIZj7K7_m6x_af4vzo89539a/view">kmol-2019.7z</a> ,  <a href="https://drive.google.com/file/d/1G3cEZsw6d7NjqLLgu9jljVNBd6wF-ZrG/view">nodejs-with-ungit.7z</a></p>
+<p>2.兩者分別解開壓縮檔案, 然後將 nodejs 放入 kmol_2019 的 data 目錄中</p>
 <p>3.設定啟動 start.bat 中的 ungit 命列列搜尋路徑:</p>
 <p>set path8=%Disk%:\nodejs;%Disk%:\nodejs\appdata\roaming\npm;</p>
+<p><img src=https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/images/1.jpg
+ <width="750" heith="357"></a></p>
 <p>4.將 path8 納入 path 設定:</p>
 <p>path=%path%;%path1%;%path2%;%path3%;%path4%;%path5%;%path6%;%path7%;%Disk%:\p37\site-packages\scipy\extra_dll;%Disk%:\scite\bin;%path8%;</p>
-<h1>Youtube 連結： https://www.youtube.com/watch?v=lB-spECfhr8</h1>
+<p><img src=https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/images/2.JPG
+ <width="750" heith="357"></a></p>
+<p>5.為了讓 node.js 能夠使用 y:\home 作為使用者目錄, 在 start.bat 中加入 set USERPROFILE=%Disk%:\home</p>
+<p><img src=https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/images/3.JPG
+ <width="750" heith="357"></a></p>
+<p>6.設定 kungit </p>
+<p><img src=https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/images/picforkungit.png
+ <width="750" heith="357"></a></p>
+<p>7.將檔案存放於Y:後，於cmd上執行</p>
             </section>
 
             <section class="post-info">

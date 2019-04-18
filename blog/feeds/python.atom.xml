@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CMSimfly 網際內容管理 - Python</title><link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/" rel="alternate"></link><link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/feeds/python.atom.xml" rel="self"></link><id>https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/</id><updated>2019-04-18T16:00:00+08:00</updated><entry><title>Week</title><link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0419.html" rel="alternate"></link><published>2019-04-18T16:00:00+08:00</published><updated>2019-04-18T16:00:00+08:00</updated><author><name>yen</name></author><id>tag:mdekmol.github.io,2019-04-18:/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0419.html</id><summary type="html">&lt;p&gt;期中考&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CMSimfly 網際內容管理 - Python</title><link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/" rel="alternate"></link><link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/feeds/python.atom.xml" rel="self"></link><id>https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/</id><updated>2019-04-18T16:00:00+08:00</updated><entry><title>Week9</title><link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0419.html" rel="alternate"></link><published>2019-04-18T16:00:00+08:00</published><updated>2019-04-18T16:00:00+08:00</updated><author><name>yen</name></author><id>tag:mdekmol.github.io,2019-04-18:/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0419.html</id><summary type="html">&lt;p&gt;期中考&lt;/p&gt;
 
 
 &lt;p&gt;期中考週：&lt;/p&gt;
@@ -37,7 +37,6 @@
 &lt;p&gt;onshape草圖&lt;/p&gt;
 
 
-&lt;hr&gt;
 &lt;p&gt;V-rep BubbleRob&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;1.完成上周未完成進度&lt;/p&gt;
@@ -59,7 +58,6 @@
 &lt;p&gt;onshape草圖&lt;/p&gt;
 
 
-&lt;hr&gt;
 &lt;p&gt;V-rep BubbleRob&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;1.完成上周未完成進度&lt;/p&gt;
@@ -245,18 +243,31 @@ Set the Far clipping plane item to 1, and the Resolution x and Resolution y item
 
 
 &lt;p&gt;根據 https://2019wcm.blogspot.com/search/label/ungit 完成ungit的配置&lt;/p&gt;
-&lt;p&gt;1.下載  kmol-2019.7z , 接著再下載 nodejs-with-ungit.7z, 兩者分別解開壓縮檔案, 然後將 nodejs 放入 kmol_2019 的 data 目錄中.&lt;/p&gt;
-&lt;p&gt;2.設定命令列搜尋路徑&lt;/p&gt;
+&lt;p&gt;1.下載  &lt;a href="https://drive.google.com/file/d/1Cw8mHRcHKIZj7K7_m6x_af4vzo89539a/view"&gt;kmol-2019.7z&lt;/a&gt; ,  &lt;a href="https://drive.google.com/file/d/1G3cEZsw6d7NjqLLgu9jljVNBd6wF-ZrG/view"&gt;nodejs-with-ungit.7z&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2.兩者分別解開壓縮檔案, 然後將 nodejs 放入 kmol_2019 的 data 目錄中&lt;/p&gt;
 &lt;p&gt;3.設定啟動 start.bat 中的 ungit 命列列搜尋路徑:&lt;/p&gt;
-&lt;p&gt;set path8=%Disk%:\nodejs;%Disk%:\nodejs\appdata\roaming\npm …&lt;/p&gt;</summary><content type="html">&lt;p&gt;配置 ungit&lt;/p&gt;
+&lt;p&gt;set path8=%Disk%:\nodejs;%Disk%:\nodejs\appdata\roaming\npm;&lt;/p&gt;
+&lt;p&gt;&lt;img src=https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/images/1.jpg
+ &lt;width="750" heith="357"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;4.將 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;配置 ungit&lt;/p&gt;
 &lt;p&gt;下載 ungit 與 node.js 程式碼&lt;/p&gt;
 
 
 &lt;p&gt;根據 https://2019wcm.blogspot.com/search/label/ungit 完成ungit的配置&lt;/p&gt;
-&lt;p&gt;1.下載  kmol-2019.7z , 接著再下載 nodejs-with-ungit.7z, 兩者分別解開壓縮檔案, 然後將 nodejs 放入 kmol_2019 的 data 目錄中.&lt;/p&gt;
-&lt;p&gt;2.設定命令列搜尋路徑&lt;/p&gt;
+&lt;p&gt;1.下載  &lt;a href="https://drive.google.com/file/d/1Cw8mHRcHKIZj7K7_m6x_af4vzo89539a/view"&gt;kmol-2019.7z&lt;/a&gt; ,  &lt;a href="https://drive.google.com/file/d/1G3cEZsw6d7NjqLLgu9jljVNBd6wF-ZrG/view"&gt;nodejs-with-ungit.7z&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2.兩者分別解開壓縮檔案, 然後將 nodejs 放入 kmol_2019 的 data 目錄中&lt;/p&gt;
 &lt;p&gt;3.設定啟動 start.bat 中的 ungit 命列列搜尋路徑:&lt;/p&gt;
 &lt;p&gt;set path8=%Disk%:\nodejs;%Disk%:\nodejs\appdata\roaming\npm;&lt;/p&gt;
+&lt;p&gt;&lt;img src=https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/images/1.jpg
+ &lt;width="750" heith="357"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;4.將 path8 納入 path 設定:&lt;/p&gt;
 &lt;p&gt;path=%path%;%path1%;%path2%;%path3%;%path4%;%path5%;%path6%;%path7%;%Disk%:\p37\site-packages\scipy\extra_dll;%Disk%:\scite\bin;%path8%;&lt;/p&gt;
-&lt;h1&gt;Youtube 連結： https://www.youtube.com/watch?v=lB-spECfhr8&lt;/h1&gt;</content><category term="2018FallCP"></category></entry></feed>
+&lt;p&gt;&lt;img src=https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/images/2.JPG
+ &lt;width="750" heith="357"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;5.為了讓 node.js 能夠使用 y:\home 作為使用者目錄, 在 start.bat 中加入 set USERPROFILE=%Disk%:\home&lt;/p&gt;
+&lt;p&gt;&lt;img src=https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/images/3.JPG
+ &lt;width="750" heith="357"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;6.設定 kungit &lt;/p&gt;
+&lt;p&gt;&lt;img src=https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/images/picforkungit.png
+ &lt;width="750" heith="357"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;7.將檔案存放於Y:後，於cmd上執行&lt;/p&gt;</content><category term="2018FallCP"></category></entry></feed>
