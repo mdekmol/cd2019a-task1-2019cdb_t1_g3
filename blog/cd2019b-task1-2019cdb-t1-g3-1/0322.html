@@ -42,7 +42,7 @@
 
     <link href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0322.html" rel="canonical" />
 
-        <meta name="description" content="V-rep BubbleRob 依照http://www.coppeliarobotics.com/helpFiles/en/bubbleRobTutorial.htm 步驟 Add a primitive sphere of diameter 0.2 to the...">
+        <meta name="description" content="V-rep BubbleRob V-rep BubbleRob 模擬 Add a primitive sphere of diameter 0.2 to the scene with [Menu bar --> Add --> Primitive shape -->...">
 
         <meta name="author" content="yen">
 
@@ -54,7 +54,7 @@
 <!-- Open Graph -->
 <meta property="og:site_name" content="CMSimfly 網際內容管理"/>
 <meta property="og:title" content="Week5"/>
-<meta property="og:description" content="V-rep BubbleRob 依照http://www.coppeliarobotics.com/helpFiles/en/bubbleRobTutorial.htm 步驟 Add a primitive sphere of diameter 0.2 to the..."/>
+<meta property="og:description" content="V-rep BubbleRob V-rep BubbleRob 模擬 Add a primitive sphere of diameter 0.2 to the scene with [Menu bar --> Add --> Primitive shape -->..."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0322.html"/>
 <meta property="og:type" content="article"/>
@@ -82,7 +82,7 @@
   },
   "image": "https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/theme/images/post-bg.jpg",
   "url": "https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0322.html",
-  "description": "V-rep BubbleRob 依照http://www.coppeliarobotics.com/helpFiles/en/bubbleRobTutorial.htm 步驟 Add a primitive sphere of diameter 0.2 to the..."
+  "description": "V-rep BubbleRob V-rep BubbleRob 模擬 Add a primitive sphere of diameter 0.2 to the scene with [Menu bar --> Add --> Primitive shape -->..."
 }
 </script>
 <script type="text/javascript" src="./../data/syntaxhighlighter/shCore.js"></script>
@@ -224,8 +224,9 @@ init_mathjax();
         <div class="inner">
             <section class="post-content">
                 <p>V-rep BubbleRob</p>
-<hr>
-<p>依照http://www.coppeliarobotics.com/helpFiles/en/bubbleRobTutorial.htm 步驟</p>
+
+
+<p>V-rep BubbleRob 模擬</p>
 <p>Add a primitive sphere of diameter 0.2 to the scene with [Menu bar --&gt; Add --&gt; Primitive shape --&gt; Sphere].</p>
 <p>使用[菜單欄(Menu bar) - &gt;添加(Add) - &gt;原始形狀(Primitive shape) - &gt;球體(Sphere)]向場景添加直徑為0.2的球體。</p>
 <p>We adjust the X-size item to 0.2, then click OK.</p>
@@ -332,106 +333,53 @@ Set the Far clipping plane item to 1, and the Resolution x and Resolution y item
 <p>Select bubbleRob and click [Menu bar --&gt; Add --&gt; Associated child script --&gt; Non threaded].</p>
 <p>選擇bubbleRob並點擊[菜單欄 - &gt;添加 - &gt;關聯的子腳本 - &gt;非線程]。</p>
 <p>copy and paste following code into the script editor</p>
-<p>將以下代碼複製並粘貼到腳本編輯器中</p>
-<hr>
-<p>function speedChange_callback(ui,id,newVal)</p>
-<div class="highlight"><pre><span></span>speed=minMaxSpeed[1]+(minMaxSpeed[2]-
+<p>將代碼複製並貼到腳本編輯器中</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">speedChange_callback</span><span class="p">(</span><span class="nx">ui</span><span class="p">,</span><span class="nx">id</span><span class="p">,</span><span class="nx">newVal</span><span class="p">)</span>
+    <span class="nx">speed</span><span class="o">=</span><span class="nx">minMaxSpeed</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="nx">minMaxSpeed</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="nx">minMaxSpeed</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="nx">newVal</span><span class="o">/</span><span class="mi">100</span>
+<span class="nx">end</span>
+
+<span class="kd">function</span> <span class="nx">sysCall_init</span><span class="p">()</span>
+    <span class="o">--</span> <span class="nx">This</span> <span class="nx">is</span> <span class="nx">executed</span> <span class="nx">exactly</span> <span class="nx">once</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">first</span> <span class="nx">time</span> <span class="k">this</span> <span class="nx">script</span> <span class="nx">is</span> <span class="nx">executed</span>
+    <span class="nx">bubbleRobBase</span><span class="o">=</span><span class="nx">sim</span><span class="p">.</span><span class="nx">getObjectAssociatedWithScript</span><span class="p">(</span><span class="nx">sim</span><span class="p">.</span><span class="nx">handle_self</span><span class="p">)</span> <span class="o">--</span> <span class="k">this</span> <span class="nx">is</span> <span class="nx">bubbleRob</span><span class="s1">&#39;s handle</span>
+<span class="s1">    leftMotor=sim.getObjectHandle(&quot;bubbleRob_leftMotor&quot;) -- Handle of the left motor</span>
+<span class="s1">    rightMotor=sim.getObjectHandle(&quot;bubbleRob_rightMotor&quot;) -- Handle of the right motor</span>
+<span class="s1">    noseSensor=sim.getObjectHandle(&quot;bubbleRob_sensingNose&quot;) -- Handle of the proximity sensor</span>
+<span class="s1">    minMaxSpeed={50*math.pi/180,300*math.pi/180} -- Min and max speeds for each motor</span>
+<span class="s1">    backUntilTime=-1 -- Tells whether bubbleRob is in forward or backward mode</span>
+<span class="s1">    -- Create the custom UI:</span>
+<span class="s1">        xml = &#39;</span><span class="o">&lt;</span><span class="nx">ui</span> <span class="nx">title</span><span class="o">=</span><span class="s2">&quot;&#39;..sim.getObjectName(bubbleRobBase)..&#39; speed&quot;</span> <span class="nx">closeable</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="nx">resizeable</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="nx">activate</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="o">&gt;</span><span class="err">&#39;</span><span class="p">..[[</span>
+        <span class="o">&lt;</span><span class="nx">hslider</span> <span class="nx">minimum</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="nx">maximum</span><span class="o">=</span><span class="s2">&quot;100&quot;</span> <span class="nx">onchange</span><span class="o">=</span><span class="s2">&quot;speedChange_callback&quot;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">label</span> <span class="nx">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nx">style</span><span class="o">=</span><span class="s2">&quot;* {margin-left: 300px;}&quot;</span><span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="err">/ui&gt;</span>
+        <span class="p">]]</span>
+    <span class="nx">ui</span><span class="o">=</span><span class="nx">simUI</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">xml</span><span class="p">)</span>
+    <span class="nx">speed</span><span class="o">=</span><span class="p">(</span><span class="nx">minMaxSpeed</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="nx">minMaxSpeed</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">*</span><span class="mf">0.5</span>
+    <span class="nx">simUI</span><span class="p">.</span><span class="nx">setSliderValue</span><span class="p">(</span><span class="nx">ui</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="nx">speed</span><span class="o">-</span><span class="nx">minMaxSpeed</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="nx">minMaxSpeed</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="nx">minMaxSpeed</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nx">end</span>
+
+<span class="kd">function</span> <span class="nx">sysCall_actuation</span><span class="p">()</span>
+    <span class="nx">result</span><span class="o">=</span><span class="nx">sim</span><span class="p">.</span><span class="nx">readProximitySensor</span><span class="p">(</span><span class="nx">noseSensor</span><span class="p">)</span> <span class="o">--</span> <span class="nx">Read</span> <span class="nx">the</span> <span class="nx">proximity</span> <span class="nx">sensor</span>
+    <span class="o">--</span> <span class="nx">If</span> <span class="nx">we</span> <span class="nx">detected</span> <span class="nx">something</span><span class="p">,</span> <span class="nx">we</span> <span class="nx">set</span> <span class="nx">the</span> <span class="nx">backward</span> <span class="nx">mode</span>:
+    <span class="kt">if</span> <span class="p">(</span><span class="nx">result</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="nx">then</span> <span class="nx">backUntilTime</span><span class="o">=</span><span class="nx">sim</span><span class="p">.</span><span class="nx">getSimulationTime</span><span class="p">()</span><span class="o">+</span><span class="mi">4</span> <span class="nx">end</span> 
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">backUntilTime</span><span class="o">&lt;</span><span class="nx">sim</span><span class="p">.</span><span class="nx">getSimulationTime</span><span class="p">())</span> <span class="nx">then</span>
+        <span class="o">--</span> <span class="nx">When</span> <span class="k">in</span> <span class="nx">forward</span> <span class="nx">mode</span><span class="p">,</span> <span class="nx">we</span> <span class="nx">simply</span> <span class="nx">move</span> <span class="nx">forward</span> <span class="nx">at</span> <span class="nx">the</span> <span class="nx">desired</span> <span class="nx">speed</span>
+        <span class="nx">sim</span><span class="p">.</span><span class="nx">setJointTargetVelocity</span><span class="p">(</span><span class="nx">leftMotor</span><span class="p">,</span><span class="nx">speed</span><span class="p">)</span>
+        <span class="nx">sim</span><span class="p">.</span><span class="nx">setJointTargetVelocity</span><span class="p">(</span><span class="nx">rightMotor</span><span class="p">,</span><span class="nx">speed</span><span class="p">)</span>
+    <span class="k">else</span>
+        <span class="o">--</span> <span class="nx">When</span> <span class="k">in</span> <span class="nx">backward</span> <span class="nx">mode</span><span class="p">,</span> <span class="nx">we</span> <span class="nx">simply</span> <span class="nx">backup</span> <span class="k">in</span> <span class="nx">a</span> <span class="nx">curve</span> <span class="nx">at</span> <span class="nx">reduced</span> <span class="nx">speed</span>
+        <span class="nx">sim</span><span class="p">.</span><span class="nx">setJointTargetVelocity</span><span class="p">(</span><span class="nx">leftMotor</span><span class="p">,</span><span class="o">-</span><span class="nx">speed</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="nx">sim</span><span class="p">.</span><span class="nx">setJointTargetVelocity</span><span class="p">(</span><span class="nx">rightMotor</span><span class="p">,</span><span class="o">-</span><span class="nx">speed</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
+    <span class="nx">end</span>
+<span class="nx">end</span>
+
+<span class="kd">function</span> <span class="nx">sysCall_cleanup</span><span class="p">()</span>
+    <span class="nx">simUI</span><span class="p">.</span><span class="nx">destroy</span><span class="p">(</span><span class="nx">ui</span><span class="p">)</span>
+<span class="nx">end</span>
 </pre></div>
 
 
-<p>minMaxSpeed[1])*newVal/100</p>
-<p>end</p>
-<p>function sysCall_init()</p>
-<div class="highlight"><pre><span></span>-- This is executed exactly once, the first time this
-</pre></div>
-
-
-<p>script is executed</p>
-<div class="highlight"><pre><span></span>bubbleRobBase=sim.getObjectAssociatedWithScript
-</pre></div>
-
-
-<p>(sim.handle_self) -- this is bubbleRob's handle</p>
-<div class="highlight"><pre><span></span>leftMotor=sim.getObjectHandle(&quot;bubbleRob_leftMo
-</pre></div>
-
-
-<p>tor") -- Handle of the left motor</p>
-<div class="highlight"><pre><span></span>rightMotor=sim.getObjectHandle(&quot;bubbleRob_rightMotor&quot;) -- Handle of the right motor
-
-noseSensor=sim.getObjectHandle(&quot;bubbleRob_sensingNose&quot;) -- Handle of the proximity sensor
-
-minMaxSpeed={50*math.pi/180,300*math.pi/180}
-</pre></div>
-
-
-<p>-- Min and max speeds for each motor</p>
-<div class="highlight"><pre><span></span>backUntilTime=-1 -- Tells whether bubbleRob is in
-</pre></div>
-
-
-<p>forward or backward mode</p>
-<div class="highlight"><pre><span></span><span class="nt">--</span> <span class="nt">Create</span> <span class="nt">the</span> <span class="nt">custom</span> <span class="nt">UI</span><span class="o">:</span>
-
-    <span class="nt">xml</span> <span class="o">=</span> <span class="s1">&#39;&amp;lt;ui title=&quot;&#39;</span><span class="o">.</span><span class="p">.</span><span class="nc">sim</span><span class="p">.</span><span class="nc">getObjectName</span><span class="o">(</span><span class="nt">bubbleRobBase</span><span class="o">)..</span><span class="s1">&#39; speed&quot; closeable=&quot;false&quot; resizeable=&quot;false&quot; activate=&quot;false&quot;&amp;gt;&#39;</span><span class="o">..</span><span class="cp">[</span><span class="err">[</span>
-    <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">hslider</span> <span class="n">minimum</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">maximum</span><span class="o">=</span><span class="s2">&quot;100&quot;</span> <span class="n">onchange</span><span class="o">=</span><span class="s2">&quot;speedChange_callback&quot;</span> <span class="n">id</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="o">/&amp;</span><span class="nb">gt</span><span class="p">;</span>
-    <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;</span><span class="nx">label</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;* {margin-left: 300px;}&quot;</span><span class="o">/&amp;</span><span class="nb">gt</span><span class="p">;</span>
-    <span class="o">&amp;</span><span class="nx nx-Member">lt</span><span class="p">;/</span><span class="nx">ui</span><span class="o">&amp;</span><span class="nx nx-Member">gt</span><span class="p">;</span>
-    <span class="cp">]</span><span class="o">]</span>
-
-<span class="nt">ui</span><span class="o">=</span><span class="nt">simUI</span><span class="p">.</span><span class="nc">create</span><span class="o">(</span><span class="nt">xml</span><span class="o">)</span>
-
-<span class="nt">speed</span><span class="o">=(</span><span class="nt">minMaxSpeed</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">+</span><span class="nt">minMaxSpeed</span><span class="cp">[</span><span class="mi">2</span><span class="cp">]</span><span class="o">)*</span><span class="nt">0</span><span class="p">.</span><span class="nc">5</span>
-
-<span class="nt">simUI</span><span class="p">.</span><span class="nc">setSliderValue</span><span class="o">(</span><span class="nt">ui</span><span class="o">,</span><span class="nt">1</span><span class="o">,</span><span class="nt">100</span><span class="o">*(</span><span class="nt">speed-minMaxSpeed</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">)/(</span><span class="nt">minMaxSpeed</span><span class="cp">[</span><span class="mi">2</span><span class="cp">]</span><span class="nt">-minMaxSpeed</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">))</span>
-</pre></div>
-
-
-<p>end</p>
-<p>function sysCall_actuation()</p>
-<div class="highlight"><pre><span></span>result=sim.readProximitySensor(noseSensor) -- Read
-</pre></div>
-
-
-<p>the proximity sensor</p>
-<div class="highlight"><pre><span></span>-- If we detected something, we set the backward
-</pre></div>
-
-
-<p>mode:</p>
-<div class="highlight"><pre><span></span>if (result&amp;gt;0) then
-</pre></div>
-
-
-<p>backUntilTime=sim.getSimulationTime()+4 end</p>
-<div class="highlight"><pre><span></span>if (backUntilTime&amp;lt;sim.getSimulationTime()) then
-
-    -- When in forward mode, we simply move forward at the desired speed
-
-    sim.setJointTargetVelocity(leftMotor,speed)
-
-    sim.setJointTargetVelocity(rightMotor,speed)
-
-else
-
-    -- When in backward mode, we simply backup in a curve at reduced speed
-
-    sim.setJointTargetVelocity(leftMotor,-speed/2)
-
-    sim.setJointTargetVelocity(rightMotor,-speed/8)
-
-end
-</pre></div>
-
-
-<p>end</p>
-<p>function sysCall_cleanup()</p>
-<div class="highlight"><pre><span></span>simUI.destroy(ui)
-</pre></div>
-
-
-<p>end</p>
-<hr>
+<p><a href="http://www.coppeliarobotics.com/helpFiles/en/bubbleRobTutorial.htm">參考文章</a></p>
             </section>
 
             <section class="post-info">
@@ -473,7 +421,7 @@ end
                         <section class="post-nav-teaser">
                             <i class="ic ic-arrow-left"></i>
                                 <h2 class="post-nav-title">Week6</h2>
-                            <p class="post-nav-excerpt"></p>
+                            <p class="post-nav-excerpt">V-rep BubbleRob onshape草圖 V-rep BubbleRob 1.完成上周未完成進度 2.完成後的模擬結果 onshape 草圖完成 1.草圖...</p>
                         </section>
                     </a>
                     <a class="post-nav-prev" href="https://mdekmol.github.io/cd2019b-task1-2019cdb_t1_g3_1/blog/cd2019b-task1-2019cdb-t1-g3-1/0315.html">
